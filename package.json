@@ -1,0 +1,36 @@
+{
+  "name": "time_tailored_string_exercise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "calculateSpentTimeFromFile.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "chai": "^4.2.0",
+    "commander": "^5.1.0",
+    "jquery": "^3.4.1",
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/register": "^7.9.0",
+    "esm": "^3.2.25",
+    "mocha": "^7.1.1"
+  },
+  "scripts": {
+    "test": "mocha --require esm"
+  },
+  "author": "",
+  "license": "ISC",
+  "babel": {
+    "presets": [
+      "stage-3",
+      "latest"
+    ]
+  }
+}
