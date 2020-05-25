@@ -9,6 +9,7 @@ function calculateSpentTimePerProject(sourceFilePath) {
   let timeRecordsStrings = fs.readFileSync(`${sourceFilePath}`, "utf8").match(timeRecordsStringRegExp);
   let userToTimeEntryMaps = createUserToTimeEntryMaps(timeRecordsStrings);
   let totalTimePerEachString = calculateTotalTimePerEachString(userToTimeEntryMaps);
+  console.log(totalTimePerEachString.length);
 
   let rawStringsWithProjectID = fs.readFileSync(`${sourceFilePath}`, "utf8").match(projectIDStringRegExp);
   let projectIDs = selectProjectID(rawStringsWithProjectID, projectIDRegExp);
@@ -25,6 +26,8 @@ function createUserToTimeEntryMaps(timeRecordsStrings) {
   timeRecordsStrings.forEach((string => {
     if(calculateSpentTimeFromString(string)) {
       userToTimeEntryMaps.push(calculateSpentTimeFromString(string))
+    } else {
+      userToTimeEntryMaps.push(0)
     }
   }));
 

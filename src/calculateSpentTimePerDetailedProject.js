@@ -27,6 +27,8 @@ function createUserToTimeEntryMaps(timeRecordsStrings) {
   timeRecordsStrings.forEach((string => {
     if(calculateSpentTimeFromString(string)) {
       userToTimeEntryMaps.push(calculateSpentTimeFromString(string))
+    } else {
+      userToTimeEntryMaps.push(0)
     }
   }));
 
