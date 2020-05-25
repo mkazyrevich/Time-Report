@@ -1,15 +1,14 @@
 function calculateSpentTimePerProject(sourceFilePath) {
 
   const timeRecordsStringRegExp = new RegExp(/^\#{6}[^#].*/, 'gm');
-  const projectIDStringRegExp = new RegExp(/(?<=(^\#{6}[^#].*\s*))^\w+/, 'gm');
-  const projectIDRegExp = new RegExp(/(?<=\w*)([a-zA-Z0-9]+)_([a-zA-Z0-9]+)$/, 'gm');
+  const projectIDStringRegExp = new RegExp(/(?<=(^\#{6}[^#].*\s*))^[\w.]+/, 'gm');
+  const projectIDRegExp = new RegExp(/(?<=[\w.]*)([a-zA-Z0-9]+)_([a-zA-Z0-9]+)$/, 'gm');
 
   const fs = require("fs");
 
   let timeRecordsStrings = fs.readFileSync(`${sourceFilePath}`, "utf8").match(timeRecordsStringRegExp);
   let userToTimeEntryMaps = createUserToTimeEntryMaps(timeRecordsStrings);
   let totalTimePerEachString = calculateTotalTimePerEachString(userToTimeEntryMaps);
-  console.log(totalTimePerEachString.length);
 
   let rawStringsWithProjectID = fs.readFileSync(`${sourceFilePath}`, "utf8").match(projectIDStringRegExp);
   let projectIDs = selectProjectID(rawStringsWithProjectID, projectIDRegExp);

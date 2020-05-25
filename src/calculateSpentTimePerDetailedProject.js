@@ -1,8 +1,8 @@
 function calculateSpentTimePerDetailedProject(sourceFilePath) {
 
   const timeRecordsStringRegExp = new RegExp(/^\#{6}[^#].*/, 'gm');
-  const projectIDStringRegExp = new RegExp(/(?<=(^\#{6}[^#].*\s))^\w+/, 'gm');
-  const projectIDRegExp = new RegExp(/(?<=\w*)([a-zA-Z0-9]+)_([a-zA-Z0-9]+)$/, 'gm');
+  const projectIDStringRegExp = new RegExp(/(?<=(^\#{6}[^#].*\s))^[\w.]+/, 'gm');
+  const projectIDRegExp = new RegExp(/(?<=[\w.]*)([a-zA-Z0-9]+)_([a-zA-Z0-9]+)$/, 'gm');
 
   const fs = require("fs");
 
