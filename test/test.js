@@ -105,7 +105,7 @@ describe('calculateTime()', function() {
     process.argv = test.parameters;
     let rawSource = fs.readFileSync(`${process.argv[3]}`, "utf8");
     let source = rawSource.replace(/\r\n/g, '\n');
-    selectMode(process.argv);
+    fs.writeFileSync(`${process.argv[4]}` , JSON.stringify(selectMode(process.argv), null, '\t'));
     let rawResultString = fs.readFileSync(`${process.argv[4]}`, "utf8");
     let resultString = rawResultString.replace(/\t/g, ' ')
 

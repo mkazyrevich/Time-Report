@@ -4,7 +4,7 @@ const calculateSpentTimePerDetailedProject = require('./calculateSpentTimePerDet
 
 function selectMode(parameters) {
   let sourceFilePath = parameters[3];
-  let targetFilePath = parameters[4];
+  let result;
 
   const commander = require('commander');
   commander
@@ -14,16 +14,18 @@ function selectMode(parameters) {
     .parse();
 
   if(commander.user) {
-    calculateSpentTimePerUser(sourceFilePath, targetFilePath);
+    result = calculateSpentTimePerUser(sourceFilePath);
   }
 
   if(commander.project) {
-    calculateSpentTimePerProject(sourceFilePath, targetFilePath);
+    result = calculateSpentTimePerProject(sourceFilePath);
   }
 
   if(commander.detailedProject) {
-    calculateSpentTimePerDetailedProject(sourceFilePath, targetFilePath);
+    result = calculateSpentTimePerDetailedProject(sourceFilePath);
   }
+
+  return result
 }
 
 module.exports = selectMode;

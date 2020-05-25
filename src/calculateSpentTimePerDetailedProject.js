@@ -1,4 +1,4 @@
-function calculateSpentTimePerDetailedProject(sourceFilePath, targetFilePath) {
+function calculateSpentTimePerDetailedProject(sourceFilePath) {
 
   const timeRecordsStringRegExp = new RegExp(/^\#{6}[^#].*/, 'gm');
   const projectIDStringRegExp = new RegExp(/(?<=(^\#{6}[^#].*\s))^\w+/, 'gm');
@@ -17,7 +17,7 @@ function calculateSpentTimePerDetailedProject(sourceFilePath, targetFilePath) {
   let sortedProjectIDWithTasksToTimeEntryMap = sortTasksTimesPerEachProject(projectIDWithTasksToTimeEntryMap);
   let convertedTimeForEachProjectIDWithTasks = convertMinToHoursForEachEntry(sortedProjectIDWithTasksToTimeEntryMap);
   
-  fs.writeFileSync(`${targetFilePath}` , JSON.stringify(convertedTimeForEachProjectIDWithTasks, null, '\t'));
+  return convertedTimeForEachProjectIDWithTasks;
 }
 
 function createUserToTimeEntryMaps(timeRecordsStrings) {
