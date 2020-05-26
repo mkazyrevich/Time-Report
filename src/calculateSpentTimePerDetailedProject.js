@@ -94,6 +94,7 @@ function createProjectIDWithTasksToTimeEntryMap(projectIDs, tasks, totalTimePerE
       project['Total Time'] += totalTimePerEachString[index];
     }
     project[task] = totalTimePerEachString[index];
+    delete project[''];
   })
   return projectIDWithTasksToTimeEntryMap;
 }
@@ -102,7 +103,8 @@ function convertMinToHours(timeStringInMin) {
 
   let hours = Math.floor(+timeStringInMin / 60);
   let minutes = +timeStringInMin - hours * 60;
-  let timeStringInHours = hours + 'h ' + minutes + 'm';
+  let rawtimeStringInHours = hours + 'h ' + minutes + 'm';
+  let timeStringInHours = rawtimeStringInHours.replace(/0h 0m/g, '0');
 
   return timeStringInHours
 }
