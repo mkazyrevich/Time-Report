@@ -1,3 +1,35 @@
+
+# Created by https://www.toptal.com/developers/gitignore/api/node,macos
+# Edit at https://www.toptal.com/developers/gitignore?templates=node,macos
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
 ### Node ###
 # Logs
 logs
@@ -21,7 +53,6 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
-*.lcov
 
 # nyc test coverage
 .nyc_output
@@ -44,9 +75,6 @@ jspm_packages/
 
 # TypeScript v1 declaration files
 typings/
-
-# TypeScript cache
-*.tsbuildinfo
 
 # Optional npm cache directory
 .npm
@@ -76,18 +104,6 @@ typings/
 # nuxt.js build output
 .nuxt
 
-# rollup.js default build output
-dist/
-
-# Uncomment the public line if your project uses Gatsby
-# https://nextjs.org/blog/next-9-1#public-directory-support
-# https://create-react-app.dev/docs/using-the-public-folder/#docsNav
-# public
-
-# Storybook build outputs
-.out
-.storybook-out
-
 # vuepress build output
 .vuepress/dist
 
@@ -100,8 +116,4 @@ dist/
 # DynamoDB Local files
 .dynamodb/
 
-# Temporary folders
-tmp/
-temp/
-
-# End of https://www.gitignore.io/api/node
+# End of https://www.toptal.com/developers/gitignore/api/node,macos
