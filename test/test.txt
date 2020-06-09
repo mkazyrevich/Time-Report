@@ -1,7 +1,7 @@
 ###### all I did today; r i r2.2h vlad 20m, 20, 30m, 3.5h, 2hu40m
-task_3_Project_test
+task_3_project_test
 ###### all I did today;r 22 i vlad 20m, 20h 20m, g 35m, 2.5h 2hu40m v 40h20m 
-Sample_task_1_project_1
+Sample_task_1_Project_1
 Invalid String
 ###### gikfdu; a 70
 task_1_Test_ID

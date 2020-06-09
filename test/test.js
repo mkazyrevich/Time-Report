@@ -37,7 +37,7 @@ describe('calculateTime()', function() {
       parameters: ['node', 'src/calculateTime.js', '--project', './test/test.txt', './test/result.txt'], 
       expected: {
         "Project_test": "231h 57m",
-        "project_1": "199h 33m",
+        "Project_1": "199h 33m",
         "Test_ID": "1h 10m",
         "project_3": "35h 55m"
       }
@@ -46,7 +46,7 @@ describe('calculateTime()', function() {
       parameters: ['node', 'src/calculateTime.js', '-p', './test/test.txt', './test/result.txt'], 
       expected: {
         "Project_test": "231h 57m",
-        "project_1": "199h 33m",
+        "Project_1": "199h 33m",
         "Test_ID": "1h 10m",
         "project_3": "35h 55m"
       }
@@ -60,7 +60,7 @@ describe('calculateTime()', function() {
           "sample_task_1": "52h 5m",
           "task_3": "4h 40m"
         },
-        "project_1": {
+        "Project_1": {
           "Total Time": "199h 33m",
           "Sample_task_2": "135h 6m",
           "Sample_task_1": "64h 27m"
@@ -84,7 +84,7 @@ describe('calculateTime()', function() {
           "sample_task_1": "52h 5m",
           "task_3": "4h 40m"
         },
-        "project_1": {
+        "Project_1": {
           "Total Time": "199h 33m",
           "Sample_task_2": "135h 6m",
           "Sample_task_1": "64h 27m"

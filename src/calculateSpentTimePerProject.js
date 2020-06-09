@@ -13,17 +13,17 @@ function calculateSpentTimePerProject(sourceFilePath) {
   let rawStringsWithProjectID = fs.readFileSync(`${sourceFilePath}`, "utf8").match(projectIDStringRegExp);
   let projectIDs = selectProjectID(rawStringsWithProjectID, projectIDRegExp);
   let projectIDToTimeEntryMap = createProjectIDToTimeEntryMap(projectIDs, totalTimePerEachString);
-  let convertedTimeForEachProjectID = convertMinToHoursForEachEntry(projectIDToTimeEntryMap); 
-  
+  let convertedTimeForEachProjectID = convertMinToHoursForEachEntry(projectIDToTimeEntryMap);
+
   return convertedTimeForEachProjectID;
 }
 
 function createUserToTimeEntryMaps(timeRecordsStrings) {
   let userToTimeEntryMaps = [];
-  const calculateSpentTimeFromString = require ('./calculateSpentTimeFromString.js');
+  const calculateSpentTimeFromString = require('./calculateSpentTimeFromString.js');
 
   timeRecordsStrings.forEach((string => {
-    if(calculateSpentTimeFromString(string)) {
+    if (calculateSpentTimeFromString(string)) {
       userToTimeEntryMaps.push(calculateSpentTimeFromString(string))
     } else {
       userToTimeEntryMaps.push(0)
@@ -55,12 +55,25 @@ function selectProjectID(rawStringsWithProjectID, projectIDRegExp) {
   rawStringsWithProjectID.forEach((item) => {
     let projectID;
 
-    if(item.match(projectIDRegExp)) {
+    if (item.match(projectIDRegExp)) {
       projectID = item.match(projectIDRegExp)[0];
     }
 
     projectIDs.push(projectID);
   })
+
+  for (let i = 0; i < projectIDs.length; i++) {
+    for (let j = 0; j < projectIDs.length; j++) {
+      if (projectIDs[i].toLowerCase() === projectIDs[j].toLowerCase()) {
+        let projectIDFirstLetter = projectIDs[i][0];
+        if (projectIDFirstLetter.match(/[A-Z]/)) {
+          projectIDs[j] = projectIDs[i];
+        } else {
+          projectIDs[i] = projectIDs[j];
+        }
+      }
+    }
+  }
 
   return projectIDs;
 }
@@ -69,10 +82,10 @@ function createProjectIDToTimeEntryMap(projectIDs, totalTimePerEachString) {
   let projectIDToTimeEntryMap = {};
 
   projectIDs.forEach((item, index) => {
-    if(!projectIDToTimeEntryMap[item]) {
-      projectIDToTimeEntryMap[item] = totalTimePerEachString[index];
-    } else {
+    if (projectIDToTimeEntryMap[item]) {
       projectIDToTimeEntryMap[item] += totalTimePerEachString[index];
+    } else {
+      projectIDToTimeEntryMap[item] = totalTimePerEachString[index];
     }
   })
 
@@ -94,7 +107,7 @@ function convertMinToHoursForEachEntry(mapWithTimeEntries) {
   let convertedMapWithTimeEntries = {};
 
   for (let item in mapWithTimeEntries) {
-    if(typeof mapWithTimeEntries[item] === 'object') {
+    if (typeof mapWithTimeEntries[item] === 'object') {
       convertedMapWithTimeEntries[item] = convertMinToHoursForEachEntry(mapWithTimeEntries[item]);
     } else {
       convertedMapWithTimeEntries[item] = convertMinToHours(mapWithTimeEntries[item]);

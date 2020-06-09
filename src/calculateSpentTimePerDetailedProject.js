@@ -64,6 +64,19 @@ function selectProjectID(rawStringsWithProjectID, projectIDRegExp) {
     projectIDs.push(projectID);
   })
 
+  for (let i = 0; i < projectIDs.length; i++) {
+    for (let j = 0; j < projectIDs.length; j++) {
+      if (projectIDs[i].toLowerCase() === projectIDs[j].toLowerCase()) {
+        let projectIDFirstLetter = projectIDs[i][0];
+        if (projectIDFirstLetter.match(/[A-Z]/)) {
+          projectIDs[j] = projectIDs[i];
+        } else {
+          projectIDs[i] = projectIDs[j];
+        }
+      }
+    }
+  }
+
   return projectIDs;
 }
 
@@ -71,8 +84,9 @@ function selectTask(rawStringsWithProjectID, projectIDs) {
   let tasks = [];
   let task = '';
   rawStringsWithProjectID.forEach((string, index) => {
-    let projectID = projectIDs[index];
-    task = string.slice(0, string.indexOf(projectID)-1);
+    let projectIDToLowerCase = projectIDs[index].toLowerCase();
+    let stringToLowerCase = string.toLowerCase();
+    task = string.slice(0, stringToLowerCase.indexOf(projectIDToLowerCase)-1);
 
     tasks.push(task);
   })
