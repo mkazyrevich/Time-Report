@@ -20,7 +20,7 @@
     "@babel/preset-env": "^7.9.0",
     "@babel/register": "^7.9.0",
     "esm": "^3.2.25",
-    "mocha": "^7.1.1"
+    "mocha": "^10.2.0"
   },
   "scripts": {
     "test": "mocha --require esm"
